@@ -19,7 +19,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "accelerate>=0.29.1",
     "black>=24.1.0",
@@ -36,8 +36,8 @@ dependencies = [
     "sacrebleu>=1.5.0",
     "scikit-learn>=0.24.1",
     "sqlitedict==2.1.0",
-    "torch>=2.1.0", # to enable sdpa mode for running 34B model on one 80GB GPU
-    "torchvision>=0.16.0",
+    "torch==2.6.0", # to enable sdpa mode for running 34B model on one 80GB GPU
+    "torchvision",
     "timm",
     "einops",
     "ftfy",
@@ -114,6 +114,17 @@ mmsearch = [
     "FlagEmbedding",
     "rouge",
 ]
+flash_attn = [
+    "flash-attn",
+]
+
+[tool.uv]
+no-build-isolation-package = ["flash-attn"]
+
+[[tool.uv.dependency-metadata]]
+name = "flash-attn"
+version = "2.7.4post1"
+requires-dist = ["torch", "einops"]
 
 [tool.setuptools.packages.find]
 include = ["lmms_eval*"]
