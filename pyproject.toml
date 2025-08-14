@@ -36,7 +36,7 @@ dependencies = [
     "sacrebleu>=1.5.0",
     "scikit-learn>=0.24.1",
     "sqlitedict==2.1.0",
-    "torch==2.6.0", # to enable sdpa mode for running 34B model on one 80GB GPU
+    "torch==2.7.1",
     "torchvision",
     "timm",
     "einops",
@@ -50,7 +50,7 @@ dependencies = [
     "yt-dlp",
     "pycocoevalcap",
     "tqdm-multiprocess",
-    "transformers>=4.39.2",
+    "transformers>=4.39.2,<4.54.0",
     "transformers-stream-generator",
     "zstandard",
     "pillow",
@@ -115,7 +115,10 @@ mmsearch = [
     "rouge",
 ]
 flash_attn = [
-    "flash-attn",
+    "flash-attn==2.8.0post2",
+]
+vllm = [
+    "vllm==0.10.0"
 ]
 
 [tool.uv]
@@ -123,7 +126,7 @@ no-build-isolation-package = ["flash-attn"]
 
 [[tool.uv.dependency-metadata]]
 name = "flash-attn"
-version = "2.7.4post1"
+version = "2.8.0post2"
 requires-dist = ["torch", "einops"]
 
 [tool.setuptools.packages.find]
